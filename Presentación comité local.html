@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Educación Pública y Resistencia Magisterial · Comité Local San Cristóbal</title>
+<style>
+  :root{
+    --rojo:#c1121f;
+    --rojo-oscuro:#780000;
+    --negro:#1a1a1a;
+    --crema:#fdf6e3;
+    --acento:#e63946;
+    --verde:#2a9d8f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Georgia','Times New Roman',serif;
+    background:var(--crema);
+    color:var(--negro);
+    line-height:1.7;
+  }
+  header{
+    background:linear-gradient(135deg,var(--rojo-oscuro),var(--rojo));
+    color:white;
+    padding:3rem 2rem;
+    text-align:center;
+    border-bottom:6px solid var(--negro);
+  }
+  header h1{font-size:2.3rem;margin-bottom:0.8rem;letter-spacing:1px}
+  header p{font-size:1.1rem;opacity:0.95;max-width:800px;margin:0 auto}
+  header .meta{margin-top:1.2rem;font-size:0.9rem;opacity:0.85}
+  nav{
+    background:var(--negro);
+    position:sticky;
+    top:0;
+    z-index:100;
+    padding:0.7rem 1.5rem;
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.7rem;
+    justify-content:center;
+    box-shadow:0 2px 10px rgba(0,0,0,0.3);
+  }
+  nav a{
+    color:white;
+    text-decoration:none;
+    font-size:0.85rem;
+    padding:0.3rem 0.7rem;
+    border-radius:3px;
+    transition:all 0.3s;
+    font-family:'Arial',sans-serif;
+  }
+  nav a:hover{background:var(--rojo)}
+  main{max-width:1000px;margin:0 auto;padding:2.5rem 1.5rem}
+  section{margin-bottom:3rem;scroll-margin-top:80px}
+  h2{
+    color:var(--rojo-oscuro);
+    font-size:1.7rem;
+    border-left:6px solid var(--rojo);
+    padding-left:1rem;
+    margin-bottom:1.2rem;
+  }
+  h3{color:var(--negro);font-size:1.2rem;margin:1.2rem 0 0.6rem}
+  h4{color:var(--rojo);font-size:1rem;margin:0.8rem 0 0.4rem;text-transform:uppercase;letter-spacing:1px}
+  p{margin-bottom:0.8rem;text-align:justify}
+  .quote{
+    background:var(--negro);
+    color:var(--crema);
+    padding:1rem 1.5rem;
+    border-left:5px solid var(--rojo);
+    margin:1rem 0;
+    font-style:italic;
+    font-size:1rem;
+  }
+  .quote::before{content:"❝ ";color:var(--rojo);font-size:1.3rem}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin:1rem 0}
+  .card{
+    background:white;
+    padding:1.2rem;
+    border-top:4px solid var(--rojo);
+    box-shadow:0 3px 10px rgba(0,0,0,0.08);
+    border-radius:4px;
+  }
+  .card h4{margin-top:0}
+  .stat{
+    display:inline-block;
+    background:var(--rojo);
+    color:white;
+    padding:0.4rem 0.8rem;
+    font-size:1.3rem;
+    font-weight:bold;
+    margin:0.3rem 0.3rem 0.3rem 0;
+    border-radius:3px;
+    font-family:'Arial',sans-serif;
+  }
+  .stat small{display:block;font-size:0.7rem;font-weight:normal;opacity:0.9}
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:1rem 0;
+    background:white;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+  }
+  th{background:var(--negro);color:white;padding:0.7rem;text-align:left;font-size:0.9rem}
+  td{padding:0.7rem;border-bottom:1px solid #eee;vertical-align:top;font-size:0.88rem}
+  tr:hover td{background:#fafafa}
+  .alert{
+    background:#fff3cd;
+    border-left:5px solid #ffc107;
+    padding:0.8rem 1.2rem;
+    margin:1rem 0;
+    border-radius:3px;
+    font-size:0.95rem;
+  }
+  .alert.danger{background:#f8d7da;border-color:var(--rojo)}
+  .alert.success{background:#d4edda;border-color:var(--verde)}
+  .pregunta{
+    background:linear-gradient(135deg,#fff5f5,#ffe5e5);
+    border:2px dashed var(--rojo);
+    padding:1rem 1.2rem;
+    margin:1rem 0;
+    border-radius:5px;
+    font-weight:bold;
+    color:var(--rojo-oscuro);
+    font-size:0.95rem;
+  }
+  .pregunta::before{content:"🔥 PREGUNTA PARA EL DEBATE: ";font-size:0.8rem;display:block;margin-bottom:0.4rem;letter-spacing:1px}
+  footer{
+    background:var(--negro);
+    color:var(--crema);
+    padding:1.5rem;
+    text-align:center;
+    margin-top:3rem;
+  }
+  footer p{margin-bottom:0.4rem;text-align:center}
+  .badge{
+    display:inline-block;
+    background:var(--rojo);
+    color:white;
+    padding:0.15rem 0.6rem;
+    font-size:0.7rem;
+    border-radius:12px;
+    margin-right:0.4rem;
+    font-family:'Arial',sans-serif;
+    text-transform:uppercase;
+  }
+  ul{margin-left:1.3rem}
+  li{margin-bottom:0.3rem}
+  @media(max-width:768px){
+    header h1{font-size:1.7rem}
+    h2{font-size:1.3rem}
+    nav a{font-size:0.75rem;padding:0.25rem 0.5rem}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🚩 Educación Pública y Resistencia Magisterial</h1>
+  <p>Lectura político-sindical de la coyuntura · Septiembre 2026</p>
+  <div class="meta">Comité Local · Localidad de San Cristóbal</div>
+</header>
+
+<nav>
+  <a href="#diagnostico">1. Diagnóstico</a>
+  <a href="#ofensiva">2. Ofensiva</a>
+  <a href="#pl074">3. PL 074</a>
+  <a href="#d1075">4. Decreto 1075</a>
+  <a href="#fecode">5. FECODE</a>
+  <a href="#bogota">6. Bogotá</a>
+  <a href="#celulares">7. Celulares</a>
+  <a href="#tareas">8. Tareas</a>
+  <a href="#fuentes">9. Fuentes</a>
+</nav>
+
+<main>
+
+<section id="diagnostico">
+  <h2>1. Diagnóstico Estructural</h2>
+  <p>La coyuntura 2026 no es un simple cambio de gobierno. Es una <strong>ofensiva restauradora estructural</strong> que articula crisis global, giro a la derecha en la región y ataque coordinado contra la educación pública.</p>
+  
+  <div class="grid">
+    <div class="card">
+      <h4>📉 Cifras clave</h4>
+      <span class="stat">3,0%<small>Crecimiento mundial 2026</small></span>
+      <span class="stat">24,6%<small>Pobreza CO 2025</small></span>
+      <span class="stat">8,0%<small>Desempleo jun 2026</small></span>
+    </div>
+    <div class="card">
+      <h4>⚠️ Desde el 7 de agosto</h4>
+      <ul>
+        <li>Reducción del Estado hasta 40%</li>
+        <li>Revitalización extractivista (fracking)</li>
+        <li>Seguridad coercitiva como eje</li>
+        <li>"Shield of the Americas" / EE.UU.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="quote">La economía crea el terreno; la correlación política decide la salida.</div>
+</section>
+
+<section id="ofensiva">
+  <h2>2. Ofensiva contra la Educación</h2>
+  <p>La escuela concentra presupuesto, derechos laborales, autonomía y formación de subjetividades: por eso es <strong>terreno estratégico</strong>.</p>
+
+  <div class="grid">
+    <div class="card">
+      <h4>🎯 Ejes del ataque</h4>
+      <ul>
+        <li>Financiación mixta y subsidios a la demanda</li>
+        <li>Gestión privada/religiosa de colegios oficiales</li>
+        <li>Mercantilización y meritocracia</li>
+        <li>Narrativa "anti-ideológica"</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>🏛️ MEN: Viviane → Ilva</h4>
+      <ul>
+        <li><strong>Viviane Morales:</strong> agenda "anti-woke", valores confesionales y borrador reforma D. 1075</li>
+        <li><strong>Ilva Myriam Hoyos:</strong> exdecana La Sabana, vínculos con Ordóñez e Iglesia católica</li>
+      </ul>
+      <p class="small"><em>La prueba política: si mantiene, retira o modifica el proyecto 1075.</em></p>
+    </div>
+  </div>
+
+  <div class="alert danger">El problema democrático no es la fe privada: es convertir una moral confesional en política estatal.</div>
+</section>
+
+<section id="pl074">
+  <h2>3. Proyecto de Ley 074 de 2026</h2>
+  <p><span class="badge">Radicado 20 jul 2026</span> Autor: Daniel Felipe Briceño (Centro Democrático)</p>
+
+  <table>
+    <tr><th>#</th><th>Contenido</th><th>Riesgo</th></tr>
+    <tr><td>1</td><td><strong>Esencialidad</strong> (art. 430 CST)</td><td>Reduce margen de huelga</td></tr>
+    <tr><td>2</td><td><strong>Evaluación anual</strong> + pruebas Saber</td><td>Resultados externos en evaluación docente</td></tr>
+    <tr><td>3</td><td><strong>No pago de reposiciones</strong></td><td>Descuento salarial sin restitución</td></tr>
+    <tr><td>4</td><td><strong>Abandono:</strong> 3 días consecutivos / 5 intermitentes</td><td>Vacancia del cargo</td></tr>
+  </table>
+
+  <div class="pregunta">Si se aprueba, ¿cómo garantizamos el derecho a la protesta sin que un compañero pierda su estabilidad laboral?</div>
+</section>
+
+<section id="d1075">
+  <h2>4. Reforma al Decreto 1075</h2>
+  <p><span class="badge">Proyecto agosto 2026</span> La llave jurídica: separar "prestación" de "administración"</p>
+
+  <div class="grid">
+    <div class="card">
+      <h4>A. Contratar la prestación</h4>
+      <p>Excepcional · exige demostrar insuficiencia de la entidad territorial.</p>
+    </div>
+    <div class="card" style="border-color:#ffc107">
+      <h4>B. Contratar la administración ⚠️</h4>
+      <p>Persona jurídica pública o privada puede <strong>organizar, coordinar, administrar y dirigir</strong> colegios oficiales.</p>
+    </div>
+    <div class="card">
+      <h4>C. Gestión religiosa</h4>
+      <p>Figuras de apoyo pedagógico con iglesias o confesiones religiosas.</p>
+    </div>
+    <div class="card">
+      <h4>D. Régimen privado</h4>
+      <p>Personal del operador sin vínculo con la ETC · derecho privado · subsidios a la demanda.</p>
+    </div>
+  </div>
+
+  <div class="pregunta">¿La "administración" abre gestión privada sin exigir el mismo umbral de insuficiencia que la prestación?</div>
+</section>
+
+<section id="fecode">
+  <h2>5. XXII Asamblea de FECODE</h2>
+  <p>Cartagena, 2-4 septiembre 2026 · +400 delegadas y delegados</p>
+
+  <div class="grid">
+    <div class="card">
+      <h4>🔴 Oposición</h4>
+      <p>FECODE se declara en oposición al gobierno de Abelardo De la Espriella. Rutas: organización, movilización, acción jurídica, legislativa, pedagógica y social.</p>
+    </div>
+    <div class="card">
+      <h4>🤝 Unidad</h4>
+      <p>Educación pública financiada por el Estado · Movimiento Pedagógico · Estatuto Único · Acuerdo 03/2024 FOMAG.</p>
+    </div>
+    <div class="card">
+      <h4>⚖️ Paridad</h4>
+      <p>Aprobada por amplia mayoría. Representación real en dirección sindical.</p>
+    </div>
+    <div class="card">
+      <h4>🗺️ Territorio</h4>
+      <p>Escuela territorio de paz: memoria histórica, verdad, diversidad, vida.</p>
+    </div>
+  </div>
+
+  <div class="quote">Ante el huracán, mirar para otro lado sería de necios: hay que organizarse. · Juan Carlos Monedero</div>
+</section>
+
+<section id="bogota">
+  <h2>6. Bogotá: Circulares 13 y 005</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h4>Circular 13 · "Siempre con profes"</h4>
+      <ul>
+        <li>Cubrir incapacidades ≤ 5 días</li>
+        <li>Condición: horas excedentes reales</li>
+        <li>Participación voluntaria</li>
+        <li>Primaria: hasta 5h / 25% planta</li>
+        <li>Secundaria: hasta 2h / 30% planta</li>
+        <li><strong style="color:#c1121f">Línea roja:</strong> no cubrir vacantes permanentes</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Circular 005 · Semana octubre</h4>
+      <ul>
+        <li>Decide Consejo Académico + Directivo</li>
+        <li>No es disponibilidad 24/7</li>
+        <li>No duplicar trabajo</li>
+        <li>Respetar desconexión</li>
+        <li>Dejar todo en acta</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="alert">El riesgo no es una privatización súbita, sino normalizar que recursos y funciones públicas migren gradualmente a operadores privados.</div>
+</section>
+
+<section id="celulares">
+  <h2>7. Resolución 1037 · Celulares</h2>
+  <p><span class="badge">SED 7 sep 2026</span> "(Re)conectarnos para aprender"</p>
+
+  <table>
+    <tr><th>Nivel</th><th>Límite diario</th></tr>
+    <tr><td>Prejardín</td><td>0</td></tr>
+    <tr><td>Jardín / Transición</td><td>30 min</td></tr>
+    <tr><td>Primaria</td><td>1 hora</td></tr>
+    <tr><td>6° – 7°</td><td>2 horas</td></tr>
+    <tr><td>8° – 11°</td><td>Solo pedagógico, con pausas</td></tr>
+  </table>
+
+  <div class="alert success">
+    <strong>6 meses</strong> para ajustar Manual de Convivencia · <strong>Participación real</strong> · <strong>Enfoque pedagógico</strong> · Evitar confiscaciones arbitrarias y sobrecarga al docente.
+  </div>
+
+  <div class="pregunta">¿Nuestro Manual de Convivencia nos protege ante un conflicto por dispositivos, o nos deja solos frente a las familias?</div>
+</section>
+
+<section id="tareas">
+  <h2>8. Tareas de la Orden</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h4>🇨🇴 Nacional</h4>
+      <ol>
+        <li>Frenar PL 074</li>
+        <li>Retirar proyecto 1075</li>
+        <li>Defender SGP (AL 003/2024)</li>
+        <li>Defender FOMAG (Acuerdo 03/2024)</li>
+        <li>Estatuto Único</li>
+        <li>Movimiento Pedagógico + Frente Social</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h4>🏛️ Distrital / Local</h4>
+      <ol>
+        <li>Res. 1037 con enfoque pedagógico</li>
+        <li>Semana octubre: defender desconexión</li>
+        <li>"Siempre con profes": matrices y vacantes</li>
+        <li>Planta e inclusión</li>
+        <li>Veeduría a concesiones / APP</li>
+        <li>Vínculo territorial con familias</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="quote">Cada ataque debe convertirse en pedagogía política; cada lucha sectorial, en solidaridad de clase.</div>
+</section>
+
+<section id="fuentes">
+  <h2>9. Fuentes Verificadas</h2>
+  <ul>
+    <li><strong>PL 074/2026 Cámara:</strong> <a href="https://www.camara.gov.co/wp-content/uploads/2026/07/proyectos-ley/documentos/proyecto-36169/P.L.074-2026SC-CONTINUIDAD-SERVICIO-EDUCATIVO.pdf" target="_blank">Cámara de Representantes</a></li>
+    <li><strong>Reforma D. 1075:</strong> <a href="https://www.elpais.com.co/colombia/mineducacion-expide-decreto-que-permitiria-entregar-colegios-publicos-a-privados-iglesias-y-organizaciones-religiosas-2525.html" target="_blank">El País / MEN</a></li>
+    <li><strong>Designación Ilva Myriam Hoyos:</strong> <a href="https://www.presidencia.gov.co/prensa/Paginas/Presidente-De-La-Espriella-designa-a-Ilva-Myriam-Hoyos-como-Ministra-de-Educacion-260902.aspx" target="_blank">Presidencia</a></li>
+    <li><strong>Resolución 1037/2026:</strong> <a href="https://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=194213&dt=S" target="_blank">Alcaldía de Bogotá</a></li>
+    <li><strong>Declaración XXII Asamblea FECODE:</strong> <a href="https://adem.org.co/index.php/documentos/actualidad1/declaracion-politica-xxii-asamblea-federal" target="_blank">ADEM</a></li>
+    <li><strong>Acto Legislativo 003/2024:</strong> <a href="https://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=178499" target="_blank">Alcaldía de Bogotá</a></li>
+    <li><strong>Acuerdo 03/2024 FOMAG:</strong> <a href="https://www.fomag.gov.co/noticias/fomag-se-encuentra-en-la-fase-de-consolidacion-del-acuerdo-03-de-2024-firmado-por-el-gobierno-nacional-y-fecode/" target="_blank">FOMAG</a></li>
+    <li><strong>FMI WEO julio 2026:</strong> <a href="https://www.imf.org/en/publications/weo/issues/2026/07/08/world-economic-outlook-update-july-2026" target="_blank">FMI</a></li>
+    <li><strong>DANE pobreza 2025:</strong> <a href="https://www.dane.gov.co/index.php/estadisticas-por-tema/pobreza-y-condiciones-de-vida/pobreza-monetaria" target="_blank">DANE</a></li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p><strong>Defender lo conquistado, convertir cada ataque en organización y cada derecho en fuerza social permanente.</strong></p>
+  <p>Comité Local · Localidad de San Cristóbal · Septiembre 2026</p>
+  <p style="margin-top:0.8rem;font-size:0.85rem;opacity:0.7">Organización, Resistencia, Lucha y Defensa de Derechos en Unidad</p>
+</footer>
+
+</body>
+</html>
